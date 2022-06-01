@@ -1,2 +1,2 @@
-# Vertic's-TD-Simulator
+# Vertic's Tower Defense Simulator
 An open source Roblox Tower Defense Game.
