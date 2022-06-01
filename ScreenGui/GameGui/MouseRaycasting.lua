@@ -10,6 +10,7 @@ local camera = workspace.CurrentCamera
 local gui = script.Parent
 local towerToSpawn = nil
 local canPlace = false
+local rotation = 0
 
 -- Functions
 local function MouseRaycast(blacklist)
@@ -26,6 +27,7 @@ local function RemovePlaceholderTower()
 	if towerToSpawn then
 		towerToSpawn:Destroy()
 		towerToSpawn = nil
+		rotation = 0
 	end
 end
 
@@ -67,6 +69,9 @@ UserInputService.InputBegan:Connect(function(input, processed)
 				spawnTowerEvent:FireServer(towerToSpawn.Name, towerToSpawn.PrimaryPart.CFrame)
 				RemovePlaceholderTower()
 			end
+		elseif input.KeyCode == Enum.KeyCode.R then
+			print("Tower Rotated!")
+			rotation += 90
 		end
 	end
 end)
@@ -85,7 +90,7 @@ RunService.RenderStepped:Connect(function()
 			local x = result.Position.X
 			local y = result.Position.Y + towerToSpawn.Humanoid.HipHeight + towerToSpawn.PrimaryPart.Size.Y + 0.5
 			local z = result.Position.Z
-			local cframe = CFrame.new(x,y,z)
+			local cframe = CFrame.new(x,y,z) * CFrame.Angles(0, math.rad(rotation), 0)
 			towerToSpawn:SetPrimaryPartCFrame(cframe)
 		end
 	end
