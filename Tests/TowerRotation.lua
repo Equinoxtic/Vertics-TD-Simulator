@@ -68,7 +68,8 @@ UserInputService.InputBegan:Connect(function(input, processed)
 			if canPlace then
 				spawnTowerEvent:FireServer(towerToSpawn.Name, towerToSpawn.PrimaryPart.CFrame)
 				RemovePlaceholderTower()
-			elseif input.KeyCode == Enum.KeyCode.R then
+			end
+			if input.KeyCode == Enum.KeyCode.R then
 				print("Tower Rotated!")
 				rotation += 90
 			end
