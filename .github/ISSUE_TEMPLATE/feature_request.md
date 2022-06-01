@@ -13,7 +13,6 @@ Ex: I want [...] To be in the game!
 
 **Describe alternatives you've considered for problems**
 A clear and concise description of any alternative solutions or features you've considered for some of the problems in this project.
-Ex: This [...] is too [...] You should [...]!
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
