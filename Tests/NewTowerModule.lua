@@ -55,10 +55,10 @@ function tower.Spawn(player, name, pos)
 		towerToSpawn.HumanoidRootPart.CFrame = pos
 		towerToSpawn.Parent = workspace.Towers
 		towerToSpawn.HumanoidRootPart:SetNetworkOwner(nil)
+		coroutine.wrap(tower.Attack)(towerToSpawn)
 	else
 		warn("Requested Tower does not exist: ", name)
 	end
-	coroutine.wrap(tower.Attack)
 end
 
 
