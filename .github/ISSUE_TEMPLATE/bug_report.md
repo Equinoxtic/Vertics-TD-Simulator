@@ -1,7 +1,7 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
+about: Create a report on a very buggy feature/implementation
+title: 'Bug Report'
 labels: ''
 assignees: ''
 
@@ -11,11 +11,7 @@ assignees: ''
 A clear and concise description of what the bug is.
 
 **To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+Go to Roblox Studio and test/check if something functions/operates in a weird way.
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -23,16 +19,10 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+**Provide the Following information**
+ - Desktop OS: [ex: Windows]
+ - 32 or 64 bit system?
+ - Roblox Studio Version: [ex: Version 0.528.0.5280404]
 
 **Additional context**
 Add any other context about the problem here.
