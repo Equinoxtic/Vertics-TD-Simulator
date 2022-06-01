@@ -1,4 +1,7 @@
 local UserInputService = game:GetService("UserInputService")
-local mousePos = UserInputService:GetMouseLocation()
-task.wait(3)
-print(mousePos)
+
+while true do
+	local mousePos = UserInputService:GetMouseLocation()
+	task.wait(3)
+	print(mousePos)
+end
