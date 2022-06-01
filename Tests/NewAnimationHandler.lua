@@ -1,12 +1,14 @@
 local function setAnimation(object, animName)
 	local humanoid = object:WaitForChild("Humanoid")
 	if humanoid then
-		local animObj = humanoid:WaitForChild(animName)
+		local animObj = object:WaitForChild(animName)
 		if animObj then
 			local animator = humanoid:FindFirstChild("Animator") or Instance.new("Animator", humanoid)
 			local animTrack = animator:LoadAnimation(animObj)
 			return animTrack
 		end
+	else
+		warn("NO ANIMATION")
 	end
 end
 
