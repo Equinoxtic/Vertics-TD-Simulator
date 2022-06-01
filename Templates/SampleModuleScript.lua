@@ -24,6 +24,12 @@ function module.Function(params)
 	-- Code block
 end
 
+-- Service(s) functions - Code in the functions that the services use
+
+Service.DoThis:Connect(function(params)
+	-- Code block
+end)
+
 
 -- Return the module (DO NOT REMOVE THIS AS WELL)
 
