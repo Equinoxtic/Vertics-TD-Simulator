@@ -17,6 +17,12 @@ local service = game:GetService("Service")
 
 local var = value
 
+-- Functions - Code in some functions/local functions here
+
+local function Function(params)
+	-- Code block
+end
+
 
 -- Module Functions - Implement some functions for the module
 
