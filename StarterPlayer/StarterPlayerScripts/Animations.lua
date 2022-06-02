@@ -7,6 +7,12 @@ local function setAnimation(object, animName)
 		local animObj = object:WaitForChild(animName)
 		if animObj then
 			local animator = humanoid:FindFirstChild("Animator") or Instance.new("Animator", humanoid)
+			local playingTracks = animator:GetPlayingAnimationTracks()
+			for i, track in pairs(playingTracks) do
+				if track.Name == animName then
+					return track
+				end
+			end
 			local animTrack = animator:LoadAnimation(animObj)
 			return animTrack
 		end
