@@ -1,8 +1,28 @@
-local scriptService =  game:GetService("ServerScriptService")
+-- Services
+local scriptService = game:GetService("ServerScriptService")
+local serverStorage = game:GetService("ServerStorage")
+local timerRemote = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
+
+-- Events
+local bindables = serverStorage:WaitForChild("Bindables")
+local updateBaseHealthEvent = bindables:WaitForChild("UpdateBaseHealth")
+local gameOverEvent = bindables:WaitForChild("GameOver")
+
+-- Requires
 local mob = require(scriptService.Modules.Mob)
 local tower = require(scriptService.Modules.Tower)
+local base = require(scriptService.Modules.Base)
+
+-- Map
 local map = game.Workspace.Maps.Baseplate
-local timerRemote = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
+
+local gameOver = false
+
+base.Setup(map, 100)
+
+gameOverEvent.Event:Connect(function()
+	gameOver = true
+end)
 
 local function timerFunction(timer)
 	wait(1)
@@ -14,7 +34,7 @@ local function timerFunction(timer)
 	wait(timer)
 end
 	
-for wave=1, 40 do
+for wave=6, 40 do
 	print("WAVE: ", wave, " STARTING...")
 	
 	timerFunction(10)
@@ -48,7 +68,11 @@ for wave=1, 40 do
 	
 	repeat
 		task.wait(1)
-	until #workspace.Mobs:GetChildren() == 0
+	until #workspace.Mobs:GetChildren() == 0 or gameOver
+	
+	if gameOver then
+		print("Game Over! Round Ended!")
+	end
 	
 	print("WAVE ", wave, " ENDED")
 	task.wait(1)
