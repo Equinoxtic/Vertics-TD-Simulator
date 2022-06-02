@@ -30,6 +30,9 @@ function mob.Spawn(name, map, amount)
 				end
 			end
 			]]
+			newMob.Humanoid.Died:Connect(function()
+				newMob:Destroy()
+			end)
 			coroutine.wrap(mob.Move)(newMob, map)
 		end
 	else
