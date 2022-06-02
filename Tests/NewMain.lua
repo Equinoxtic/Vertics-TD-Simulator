@@ -1,9 +1,20 @@
-local scriptService =  game:GetService("ServerScriptService")
+-- Services
+local scriptService = game:GetService("ServerScriptService")
+local serverStorage = game:GetService("ServerStorage")
+local timerRemote = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
+
+-- Events
+local bindables = serverStorage:WaitForChild("Bindables")
+local updateBaseHealthEvent = bindables:WaitForChild("UpdateBaseHealth")
+local gameOverEvent = bindables:WaitForChild("GameOver")
+
+-- Requires
 local mob = require(scriptService.Modules.Mob)
 local tower = require(scriptService.Modules.Tower)
 local base = require(scriptService.Modules.Base)
+
+-- Map
 local map = game.Workspace.Maps.Baseplate
-local timerRemote = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
 
 base.Setup(map, 100)
 task.wait(2)
@@ -19,7 +30,7 @@ local function timerFunction(timer)
 	wait(timer)
 end
 	
-for wave=1, 40 do
+for wave=6, 40 do
 	print("WAVE: ", wave, " STARTING...")
 	
 	timerFunction(10)
