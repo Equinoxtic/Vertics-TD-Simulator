@@ -1,3 +1,6 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local towerAnimateEvent = ReplicatedStorage:WaitForChild("TowerAnimateEvent")
+
 local function setAnimation(object, animName)
 	local humanoid = object:WaitForChild("Humanoid")
 	if humanoid then
@@ -28,4 +31,8 @@ end)
 
 workspace.Towers.ChildAdded:Connect(function(object)
 	playAnimation(object, "Idle")
+end)
+
+towerAnimateEvent.OnClientEvent:Connect(function(tower, animName)
+	playAnimation(tower, animName)
 end)
