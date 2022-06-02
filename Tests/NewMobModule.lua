@@ -6,13 +6,14 @@ local mob = {}
 
 function mob.Move(mob, map)
 	local enemy = mob
+	local enemyHumanoid = enemy:WaitForChild("Humanoid")
 	local waypoints = map.Waypoints
 	for i=1, #waypoints:GetDescendants() do
 		enemy.Humanoid:MoveTo(waypoints[i].Position)
 		enemy.Humanoid.MoveToFinished:Wait()
 	end
 	enemy:Destroy()
-	updateBaseHealthEvent:Fire(enemy.Humanoid.Health)
+	updateBaseHealthEvent:Fire(enemyHumanoid.Health)
 end
 
 function mob.Spawn(name, map, amount)
