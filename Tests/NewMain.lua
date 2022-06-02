@@ -6,6 +6,8 @@ local map = game.Workspace.Maps.Baseplate
 local timerRemote = game.ReplicatedStorage:FindFirstChild("TimerRemoteEvent")
 
 base.Setup(map, 100)
+task.wait(2)
+base.UpdateHealth(50)
 
 local function timerFunction(timer)
 	wait(1)
