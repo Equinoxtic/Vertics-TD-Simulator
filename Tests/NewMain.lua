@@ -16,9 +16,13 @@ local base = require(scriptService.Modules.Base)
 -- Map
 local map = game.Workspace.Maps.Baseplate
 
+local gameOver = false
+
 base.Setup(map, 100)
-task.wait(2)
-base.UpdateHealth(50)
+
+gameOverEvent.Event:Connect(function()
+	gameOver = true
+end)
 
 local function timerFunction(timer)
 	wait(1)
@@ -64,7 +68,11 @@ for wave=6, 40 do
 	
 	repeat
 		task.wait(1)
-	until #workspace.Mobs:GetChildren() == 0
+	until #workspace.Mobs:GetChildren() == 0 or gameOver
+	
+	if gameOver then
+		print("Game Over! Round Ended!")
+	end
 	
 	print("WAVE ", wave, " ENDED")
 	task.wait(1)
