@@ -11,6 +11,8 @@ local gui = script.Parent
 local towerToSpawn = nil
 local canPlace = false
 local rotation = 0
+local placedTowers = 0
+local maxTowers = 40
 
 -- Functions
 local function MouseRaycast(blacklist)
@@ -60,7 +62,9 @@ for i, tower in pairs(towers:GetChildren()) do
 	local conf = tower:WaitForChild("Config")
 	btn.Text = conf.Tower.Value
 	btn.Activated:Connect(function()
-		AddTowerPlaceholder(tower.Name)
+		if placedTowers < maxTowers then
+			AddTowerPlaceholder(tower.Name)
+		end
 	end)
 end
 
@@ -72,6 +76,7 @@ UserInputService.InputBegan:Connect(function(input, processed)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
 			if canPlace then
 				spawnTowerEvent:FireServer(towerToSpawn.Name, towerToSpawn.PrimaryPart.CFrame)
+				placedTowers += 1
 				RemovePlaceholderTower()
 			end
 		elseif input.KeyCode == Enum.KeyCode.R then
