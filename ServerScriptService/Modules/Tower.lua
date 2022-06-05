@@ -18,16 +18,15 @@ local towerAnimateEvent = ReplicatedStorage:WaitForChild("TowerAnimateEvent")
 
 -- Functions - Code in some functions/local functions here
 
-local function FindNearestTarget(tower)
-	local maxDistance = 5
+local function FindNearestTarget(tower, range)
 	local nearestTarget = nil
 	for i, target in ipairs(workspace.Mobs:GetChildren()) do
 		local distance = (target.HumanoidRootPart.Position - tower.HumanoidRootPart.Position).Magnitude
 		print(target.Name, distance)
-		if distance < maxDistance then
+		if distance < range then
 			print(target.Name, " is the nearest target")
 			nearestTarget = target
-			maxDistance = distance
+			range = distance
 		end
 	end
 	return nearestTarget
@@ -38,14 +37,16 @@ end
 
 function tower.Attack(tower)
 	while true do
-		local target = FindNearestTarget(tower)
+		local config = tower.Config
+		local target = FindNearestTarget(tower, config.Range.Value)
 		if target and target:FindFirstChild("Humanoid") and target.Humanoid.Health > 0 then
 			local targetCFrame = CFrame.lookAt(tower.HumanoidRootPart.Position, target.HumanoidRootPart.Position)
 			tower.HumanoidRootPart.BodyGyro.CFrame = targetCFrame
 			towerAnimateEvent:FireAllClients(tower, "Attack")
-			target.Humanoid:TakeDamage(2)
+			target.Humanoid:TakeDamage(config.Damage.Value)
+			task.wait(config.Cooldown.Value)
 		end
-		task.wait(1)
+		task.wait(0.1)
 	end
 end
 
