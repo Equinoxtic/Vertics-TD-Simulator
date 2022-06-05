@@ -55,10 +55,6 @@ end
 
 
 -- Service(s) Functions
-gui.Spawn.Activated:Connect(function()
-	AddTowerPlaceholder("Swordsman")
-end)
-
 UserInputService.InputBegan:Connect(function(input, processed)
 	if processed then
 		return
