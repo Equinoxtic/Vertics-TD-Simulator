@@ -40,5 +40,5 @@ workspace.Towers.ChildAdded:Connect(function(object)
 end)
 
 towerAnimateEvent.OnClientEvent:Connect(function(tower, animName)
-	playAnimation(tower, animName)
+	playAnimation(tower, "Attack")
 end)
