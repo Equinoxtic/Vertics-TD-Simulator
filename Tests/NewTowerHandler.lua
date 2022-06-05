@@ -59,8 +59,9 @@ end
 -- Service(s) Functions
 for i, tower in pairs(towers:GetChildren()) do
 	local btn = gui.Towers.Template:Clone()
-	local conf = tower:WaitForChild("Config")
-	btn.Text = conf.Tower.Value
+	btn.Parent = gui.Towers
+	btn.Visible = true
+	btn.Text = tower.Name
 	btn.Activated:Connect(function()
 		if placedTowers < maxTowers then
 			AddTowerPlaceholder(tower.Name)
