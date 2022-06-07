@@ -14,6 +14,8 @@ local rotation = 0
 local placedTowers = 0
 local maxTowers = 40
 
+gui.TowerLabel.Text = placedTowers .. "/" .. maxTowers
+
 -- Functions
 local function MouseRaycast(blacklist)
 	local mousePos = UserInputService:GetMouseLocation()
