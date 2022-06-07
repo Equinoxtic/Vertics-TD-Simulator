@@ -17,6 +17,8 @@ local gameOverEvent = bindables:WaitForChild("GameOver")
 -- Module Functions - Implement some functions for the module
 
 function base.Setup(map, health)
+	local gui = base.Model.HealthGui
+	gui.Title.Text = base.CurrentHealth .. "/" .. base.MaxHealth
 	base.Model = map:WaitForChild("Base")
 	base.CurrentHealth = health
 	base.MaxHealth = health
