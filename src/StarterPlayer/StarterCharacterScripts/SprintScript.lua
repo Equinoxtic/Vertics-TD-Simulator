@@ -6,6 +6,7 @@ local playerService = game:GetService("Players")
 local plr = playerService.LocalPlayer
 local char = plr.Character or plr.CharacterAdded:wait()
 
+-- Functions
 inputService.InputBegan:Connect(function (key)
 	if key.KeyCode == Enum.KeyCode.LeftShift or key.KeyCode == Enum.KeyCode.RightShift then
 		running = true
