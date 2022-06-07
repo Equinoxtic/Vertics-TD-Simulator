@@ -19,10 +19,8 @@ local map = game.Workspace.Maps.Baseplate
 local gameOver = false
 
 base.Setup(map, 100)
-
-gameOverEvent.Event:Connect(function()
-	gameOver = true
-end)
+task.wait(2)
+base.UpdateHealth(0)
 
 local function timerFunction(timer)
 	wait(1)
@@ -33,8 +31,12 @@ local function timerFunction(timer)
 	until timer <= 0
 	wait(timer)
 end
+
+gameOverEvent.Event:Connect(function()
+	gameOver = true
+end)
 	
-for wave=6, 40 do
+for wave=1, 40 do
 	print("WAVE: ", wave, " STARTING...")
 	
 	timerFunction(10)
@@ -64,6 +66,13 @@ for wave=6, 40 do
 		mob.Spawn("Slow", map, 3)
 		mob.Spawn("Normal Boss", map, 1)
 		mob.Spawn("Speedy", map, 2)
+	elseif wave == 11 then
+		mob.Spawn("Slow", map, 3)
+		mob.Spawn("Zombie", map, 5)
+		mob.Spawn("Slow", map, 4)
+		mob.Spawn("Speedy", map, 7)
+		mob.Spawn("Normal Boss", map, 2)
+		mob.Spawn("Zombie", map, 3)
 	end
 	
 	repeat
