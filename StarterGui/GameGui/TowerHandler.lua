@@ -80,10 +80,10 @@ UserInputService.InputBegan:Connect(function(input, processed)
 			if canPlace then
 				spawnTowerEvent:FireServer(towerToSpawn.Name, towerToSpawn.PrimaryPart.CFrame)
 				placedTowers += 1
+				gui.TowerLabel.Text = placedTowers .. "/" .. maxTowers
 				RemovePlaceholderTower()
 			end
 		elseif input.KeyCode == Enum.KeyCode.R then
-			print("Tower Rotated!")
 			rotation += 90
 		end
 	end
