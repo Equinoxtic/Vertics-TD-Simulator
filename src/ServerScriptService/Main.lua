@@ -14,29 +14,19 @@ local map = game.Workspace.Maps.Baseplate
 
 local gameOver = false
 
-local function timerFunction(timer)
-	wait(1)
-	repeat
-		timer -= 1
-		print(timer)
-		wait(1)
-	until timer <= 0
-	wait(timer)
-end
-
 --[[
 gameOverEvent.Event:Connect(function()
 	gameOver = true
 end)
 ]]
+
+for i=10, 0, -1 do
+	print("Game starting in... ", i)
+	task.wait(1)
+end
 	
 for wave=1, 40 do
-	print("WAVE: ", wave, " STARTING...")
-	
-	timerFunction(10)
-	
-	print("WAVE: ", wave, " STARTED")
-	
+	print("WAVE ", wave, " STARTING")
 	if wave == 1 or wave == 2 then
 		mob.Spawn("Zombie", map, 3 * wave)
 	elseif wave == 3 or wave == 4 then
