@@ -11,8 +11,12 @@ local remoteFunctions = ReplicatedStorage:WaitForChild("Functions")
 local requestTowerFunction = remoteFunctions:WaitForChild("RequestTower")
 local towers = ReplicatedStorage:WaitForChild("Towers")
 local spawnTowerEvent = ReplicatedStorage:WaitForChild("TowerSpawnEvent")
+local modules = ReplicatedStorage:WaitForChild("Modules")
+local health = require(modules:WaitForChild("Health"))
 local camera = workspace.CurrentCamera
 local gui = script.Parent
+local map = workspace.Maps:WaitForChild("Baseplate")
+local base = map:WaitForChild("Base")
 local towerToSpawn = nil
 local canPlace = false
 local rotation = 0
@@ -22,6 +26,11 @@ local maxTowers = 40
 gui.TowerLabel.Text = placedTowers .. "/" .. maxTowers
 
 -- Functions
+health.Setup(base)
+workspace.Mobs.ChildAdded:Connect(function(mob)
+	health.Setup(mob)
+end)
+
 local function UpdateCash()
 	gui.PriceLabel.Text = cash.Value
 end

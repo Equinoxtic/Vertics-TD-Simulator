@@ -13,7 +13,7 @@ function health.Setup(model)
 	local newHealthBar = script.HealthGui:Clone()
 	newHealthBar.Adornee = model:WaitForChild("Head")
 	newHealthBar.Parent = Players.LocalPlayer.PlayerGui
-	health.UpdateHealth()
+	health.UpdateHealth(newHealthBar, model)
 	model.Humanoid.HealthChanged:Connect(function()
 		health.UpdateHealth(newHealthBar, model)
 	end)
